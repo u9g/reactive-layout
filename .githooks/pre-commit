@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# If package.json version changed, require a changelog entry for that version in README.md
+
+VERSION_CHANGED=$(git diff --cached -- package.json | grep '^\+.*"version"' | head -1)
+if [ -z "$VERSION_CHANGED" ]; then
+  exit 0
+fi
+
+NEW_VERSION=$(echo "$VERSION_CHANGED" | grep -o '"[0-9][^"]*"' | tr -d '"')
+if [ -z "$NEW_VERSION" ]; then
+  exit 0
+fi
+
+if git diff --cached -- README.md | grep -q "^+### $NEW_VERSION"; then
+  exit 0
+fi
+
+echo "ERROR: Version bumped to $NEW_VERSION but no changelog entry found in README.md"
+echo "Add a '### $NEW_VERSION' section to the Changelog in README.md"
+exit 1
