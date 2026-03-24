@@ -2,6 +2,8 @@
 
 A Vue 3 layout engine for building split-pane, tabbed interfaces with drag-and-drop. Think VS Code's panel system — resizable splits, draggable tabs, and drop-to-split — as a reusable package.
 
+![reactive-layout demo](screenshots/layout-demo.png)
+
 ## Install
 
 ```bash
