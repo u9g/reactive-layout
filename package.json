@@ -1,0 +1,10 @@
+{
+  "name": "reactive-layout",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  }
+}
