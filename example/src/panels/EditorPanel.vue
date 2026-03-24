@@ -1,31 +1,53 @@
 <script setup lang="ts">
-defineProps<{ file: string }>();
+import { computed } from "vue";
+
+const props = defineProps<{ file: string }>();
+
+interface Line { text: string; spans: { cls: string; text: string }[] }
+
+const appLines: Line[] = [
+  { text: "", spans: [{ cls: "kw", text: "import" }, { cls: "", text: " { " }, { cls: "fn", text: "provide" }, { cls: "", text: " } " }, { cls: "kw", text: "from" }, { cls: "", text: " " }, { cls: "str", text: '"vue"' }] },
+  { text: "", spans: [{ cls: "kw", text: "import" }, { cls: "", text: " { " }, { cls: "fn", text: "useLayout" }, { cls: "", text: ", " }, { cls: "type", text: "SplitLayout" }, { cls: "", text: " } " }, { cls: "kw", text: "from" }, { cls: "", text: " " }, { cls: "str", text: '"reactive-layout"' }] },
+  { text: "", spans: [{ cls: "kw", text: "import" }, { cls: "", text: " " }, { cls: "type", text: "PanelContent" }, { cls: "", text: " " }, { cls: "kw", text: "from" }, { cls: "", text: " " }, { cls: "str", text: '"./panels/PanelContent.vue"' }] },
+  { text: "", spans: [{ cls: "kw", text: "import" }, { cls: "", text: " " }, { cls: "type", text: "TabIcon" }, { cls: "", text: " " }, { cls: "kw", text: "from" }, { cls: "", text: " " }, { cls: "str", text: '"./panels/TabIcon.vue"' }] },
+  { text: "", spans: [] },
+  { text: "", spans: [{ cls: "kw", text: "const" }, { cls: "", text: " { " }, { cls: "var", text: "layout" }, { cls: "", text: ", " }, { cls: "var", text: "moveTab" }, { cls: "", text: ", " }, { cls: "var", text: "splitPanel" }, { cls: "", text: "," }] },
+  { text: "", spans: [{ cls: "", text: "  " }, { cls: "var", text: "removeTab" }, { cls: "", text: ", " }, { cls: "var", text: "updateSizesForSplit" }, { cls: "", text: " } = " }, { cls: "fn", text: "useLayout" }, { cls: "", text: "({" }] },
+  { text: "", spans: [{ cls: "", text: "  " }, { cls: "prop", text: "defaultLayout" }, { cls: "", text: ": {" }] },
+  { text: "", spans: [{ cls: "", text: "    " }, { cls: "prop", text: "type" }, { cls: "", text: ": " }, { cls: "str", text: '"split"' }, { cls: "", text: "," }] },
+  { text: "", spans: [{ cls: "", text: "    " }, { cls: "prop", text: "direction" }, { cls: "", text: ": " }, { cls: "str", text: '"horizontal"' }, { cls: "", text: "," }] },
+  { text: "", spans: [{ cls: "", text: "    " }, { cls: "prop", text: "sizes" }, { cls: "", text: ": [" }, { cls: "num", text: "25" }, { cls: "", text: ", " }, { cls: "num", text: "75" }, { cls: "", text: "]," }] },
+  { text: "", spans: [{ cls: "", text: "    " }, { cls: "prop", text: "children" }, { cls: "", text: ": [" }, { cls: "comment", text: "/* ... */" }, { cls: "", text: "]" }] },
+  { text: "", spans: [{ cls: "", text: "  }," }] },
+  { text: "", spans: [{ cls: "", text: "  " }, { cls: "prop", text: "storageKey" }, { cls: "", text: ": " }, { cls: "str", text: '"example-layout"' }, { cls: "", text: "," }] },
+  { text: "", spans: [{ cls: "", text: "})" }] },
+  { text: "", spans: [] },
+  { text: "", spans: [{ cls: "fn", text: "provide" }, { cls: "", text: "(" }, { cls: "str", text: '"layoutPanelContent"' }, { cls: "", text: ", " }, { cls: "type", text: "PanelContent" }, { cls: "", text: ")" }] },
+  { text: "", spans: [{ cls: "fn", text: "provide" }, { cls: "", text: "(" }, { cls: "str", text: '"layoutTabIcon"' }, { cls: "", text: ", " }, { cls: "type", text: "TabIcon" }, { cls: "", text: ")" }] },
+];
+
+const mainLines: Line[] = [
+  { text: "", spans: [{ cls: "kw", text: "import" }, { cls: "", text: " { " }, { cls: "fn", text: "createApp" }, { cls: "", text: " } " }, { cls: "kw", text: "from" }, { cls: "", text: " " }, { cls: "str", text: '"vue"' }] },
+  { text: "", spans: [{ cls: "kw", text: "import" }, { cls: "", text: " " }, { cls: "type", text: "App" }, { cls: "", text: " " }, { cls: "kw", text: "from" }, { cls: "", text: " " }, { cls: "str", text: '"./App.vue"' }] },
+  { text: "", spans: [] },
+  { text: "", spans: [{ cls: "fn", text: "createApp" }, { cls: "", text: "(" }, { cls: "type", text: "App" }, { cls: "", text: ")." }, { cls: "fn", text: "mount" }, { cls: "", text: "(" }, { cls: "str", text: '"#app"' }, { cls: "", text: ")" }] },
+];
+
+const lines = computed(() => props.file === "main.ts" ? mainLines : appLines);
 </script>
 
 <template>
   <div class="editor">
     <div class="line-numbers">
-      <div v-for="n in 18" :key="n" class="ln">{{ n }}</div>
+      <div v-for="n in lines.length" :key="n" class="ln">{{ n }}</div>
     </div>
     <div class="code">
-      <div class="line"><span class="kw">import</span> { <span class="fn">provide</span> } <span class="kw">from</span> <span class="str">"vue"</span></div>
-      <div class="line"><span class="kw">import</span> { <span class="fn">useLayout</span>, <span class="type">SplitLayout</span> } <span class="kw">from</span> <span class="str">"reactive-layout"</span></div>
-      <div class="line"><span class="kw">import</span> <span class="type">PanelContent</span> <span class="kw">from</span> <span class="str">"./panels/PanelContent.vue"</span></div>
-      <div class="line"><span class="kw">import</span> <span class="type">TabIcon</span> <span class="kw">from</span> <span class="str">"./panels/TabIcon.vue"</span></div>
-      <div class="line"></div>
-      <div class="line"><span class="kw">const</span> { <span class="var">layout</span>, <span class="var">moveTab</span>, <span class="var">splitPanel</span>,</div>
-      <div class="line">  <span class="var">removeTab</span>, <span class="var">updateSizesForSplit</span> } = <span class="fn">useLayout</span>({</div>
-      <div class="line">  <span class="prop">defaultLayout</span>: {</div>
-      <div class="line">    <span class="prop">type</span>: <span class="str">"split"</span>,</div>
-      <div class="line">    <span class="prop">direction</span>: <span class="str">"horizontal"</span>,</div>
-      <div class="line">    <span class="prop">sizes</span>: [<span class="num">25</span>, <span class="num">75</span>],</div>
-      <div class="line">    <span class="prop">children</span>: [<span class="comment">/* ... */</span>]</div>
-      <div class="line">  },</div>
-      <div class="line">  <span class="prop">storageKey</span>: <span class="str">"example-layout"</span>,</div>
-      <div class="line">})</div>
-      <div class="line"></div>
-      <div class="line"><span class="fn">provide</span>(<span class="str">"layoutPanelContent"</span>, <span class="type">PanelContent</span>)</div>
-      <div class="line"><span class="fn">provide</span>(<span class="str">"layoutTabIcon"</span>, <span class="type">TabIcon</span>)</div>
+      <div v-for="(line, i) in lines" :key="i" class="line">
+        <template v-for="(span, j) in line.spans" :key="j">
+          <span v-if="span.cls" :class="span.cls">{{ span.text }}</span>
+          <template v-else>{{ span.text }}</template>
+        </template>
+      </div>
     </div>
   </div>
 </template>
