@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, inject, type Component } from "vue";
-import type { PanelNode, PanelTab } from "./useLayout";
+import type { PanelNode } from "./useLayout";
 
 const props = defineProps<{
   panel: PanelNode;
