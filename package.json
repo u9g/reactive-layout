@@ -1,9 +1,41 @@
 {
   "name": "reactive-layout",
   "version": "0.1.0",
+  "description": "A Vue 3 layout engine for split-pane, tabbed interfaces with drag-and-drop — resizable splits, draggable tabs, and drop-to-split panels.",
   "type": "module",
   "main": "src/index.ts",
   "types": "src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    }
+  },
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "vue",
+    "vue3",
+    "layout",
+    "split-pane",
+    "tabs",
+    "drag-and-drop",
+    "resizable",
+    "panel",
+    "split-view",
+    "ide-layout"
+  ],
+  "author": "u9g",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/u9g/reactive-layout.git"
+  },
+  "homepage": "https://github.com/u9g/reactive-layout#readme",
+  "bugs": {
+    "url": "https://github.com/u9g/reactive-layout/issues"
+  },
   "peerDependencies": {
     "vue": "^3.0.0"
   },
