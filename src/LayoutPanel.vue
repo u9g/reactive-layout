@@ -130,6 +130,19 @@ function onTabDragStart(e: DragEvent, tabId: string) {
     "application/json",
     JSON.stringify({ tabId, sourcePanelId: props.panel.id }),
   );
+
+  const target = e.currentTarget as HTMLElement;
+  const rect = target.getBoundingClientRect();
+  const ghost = target.cloneNode(true) as HTMLElement;
+  ghost.style.position = "absolute";
+  ghost.style.top = "-9999px";
+  ghost.style.left = "-9999px";
+  ghost.style.width = rect.width + "px";
+  ghost.style.height = rect.height + "px";
+  ghost.style.opacity = "0.9";
+  document.body.appendChild(ghost);
+  e.dataTransfer.setDragImage(ghost, 0, 0);
+  requestAnimationFrame(() => ghost.remove());
 }
 
 const dropIndicatorStyle = computed(() => {
