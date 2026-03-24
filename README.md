@@ -4,6 +4,8 @@ A Vue 3 layout engine for building split-pane, tabbed interfaces with drag-and-d
 
 ![reactive-layout demo](screenshots/layout-demo.png)
 
+**[Live Demo](https://u9g.github.io/reactive-layout/)**
+
 ## Install
 
 ```bash
