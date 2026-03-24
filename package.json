@@ -39,7 +39,12 @@
   "peerDependencies": {
     "vue": "^3.0.0"
   },
+  "scripts": {
+    "typecheck": "vue-tsc --project test/readme-check/tsconfig.json"
+  },
   "devDependencies": {
-    "vue": "^3.5.30"
+    "vue": "^3.5.30",
+    "vue-tsc": "^3.2.5",
+    "typescript": "~5.9.3"
   }
 }

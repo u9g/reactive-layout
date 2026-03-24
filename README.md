@@ -27,7 +27,7 @@ import { useLayout, SplitLayout } from "reactive-layout";
 import MyPanelContent from "./MyPanelContent.vue";
 import MyTabIcon from "./MyTabIcon.vue";
 
-const { layout, moveTab, splitPanel, updateSizesForSplit } = useLayout({
+const { layout, moveTab, removeTab, splitPanel, updateSizesForSplit } = useLayout({
   defaultLayout: {
     type: "split",
     direction: "horizontal",
