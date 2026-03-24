@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, inject } from "vue";
+import { ref, computed, inject, type Component } from "vue";
 import type { PanelNode, PanelTab } from "./useLayout";
 
 const props = defineProps<{
@@ -9,6 +9,8 @@ const props = defineProps<{
 const moveTab = inject<(tabId: string, from: string, to: string, idx?: number) => void>("moveTab")!;
 const closeTab = inject<(tabId: string) => void>("closeTab")!;
 const splitPanel = inject<(panelId: string, dir: "horizontal" | "vertical", tabId: string, pos: "before" | "after") => void>("splitPanel")!;
+const panelContent = inject<Component>("layoutPanelContent", null as any);
+const tabIconComponent = inject<Component>("layoutTabIcon", null as any);
 
 const activeTab = computed(() => {
   return props.panel.tabs.find((t) => t.id === props.panel.activeTabId) ?? props.panel.tabs[0];
@@ -205,7 +207,7 @@ const tabInsertLineStyle = computed(() => {
         @click="setActiveTab(tab.id)"
         @dragstart="(e: DragEvent) => onTabDragStart(e, tab.id)"
       >
-        <slot name="tab-icon" :tab="tab" />
+        <component v-if="tabIconComponent" :is="tabIconComponent" :tab="tab" />
         {{ tab.label }}
         <span
           v-if="tab.closable"
@@ -224,7 +226,7 @@ const tabInsertLineStyle = computed(() => {
       @drop="onDrop"
     >
       <div v-if="dropIndicatorStyle" :style="dropIndicatorStyle" />
-      <slot :active-tab="activeTab" />
+      <component v-if="activeTab && panelContent" :is="panelContent" :active-tab="activeTab" />
     </div>
   </div>
 </template>
