@@ -1,10 +1,14 @@
 # reactive-layout
 
+[![npm version](https://img.shields.io/npm/v/reactive-layout)](https://www.npmjs.com/package/reactive-layout)
+[![npm downloads](https://img.shields.io/npm/dm/reactive-layout)](https://www.npmjs.com/package/reactive-layout)
+[![license](https://img.shields.io/npm/l/reactive-layout)](https://github.com/u9g/reactive-layout/blob/main/LICENSE)
+
 A Vue 3 layout engine for building split-pane, tabbed interfaces with drag-and-drop. Think VS Code's panel system — resizable splits, draggable tabs, and drop-to-split — as a reusable package.
 
 ![reactive-layout demo](screenshots/layout-demo.png)
 
-**[Live Demo](https://u9g.github.io/reactive-layout/)**
+**[Live Demo](https://u9g.github.io/reactive-layout/)** | **[npm](https://www.npmjs.com/package/reactive-layout)** | **[GitHub](https://github.com/u9g/reactive-layout)**
 
 ## Install
 
