@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Delegate to the global pre-push hook, since this repo sets a local
+# core.hooksPath which would otherwise prevent the global hook from running.
+exec "$HOME/.git-hooks/pre-push" "$@"
