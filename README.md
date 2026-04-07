@@ -1,4 +1,8 @@
-# reactive-layout
+<p align="center">
+  <img src="logo.svg" alt="reactive-layout logo" width="128" height="128" />
+</p>
+
+<h1 align="center">reactive-layout</h1>
 
 [![npm version](https://img.shields.io/npm/v/reactive-layout)](https://www.npmjs.com/package/reactive-layout)
 [![npm downloads](https://img.shields.io/npm/dm/reactive-layout)](https://www.npmjs.com/package/reactive-layout)
